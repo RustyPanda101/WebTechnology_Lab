@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Canvas Exercise</title>
+    <style>
+        canvas {
+            border: 2px solid #333;
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="myCanvas" width="500" height="300"></canvas>
+
+    <script>
+        // Get the canvas and the 2D drawing context
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // 2. Display a filled rectangle
+        ctx.fillStyle = '#3498db';
+        ctx.fillRect(50, 50, 150, 80); // (x, y, width, height)
+
+        // 3. Display a filled circle
+        ctx.beginPath();
+        ctx.arc(400, 90, 40, 0, Math.PI * 2); // (x, y, radius, startAngle, endAngle)
+        ctx.fillStyle = '#e74c3c';
+        ctx.fill();
+
+        // 4. Display a straight line
+        ctx.beginPath();
+        ctx.moveTo(50, 200);   // Starting point
+        ctx.lineTo(450, 200);  // Ending point
+        ctx.strokeStyle = '#2c3e50';
+        ctx.lineWidth = 5;
+        ctx.stroke();
+
+        // 5. Display text "HTML5 Canvas"
+        ctx.font = '30px Arial';
+        ctx.fillStyle = '#2c3e50';
+        ctx.textAlign = 'left'; // ??? 
+        ctx.fillText('HTML5 Canvas', canvas.width / 2, 260);
+    </script>
+
+</body>
+</html>

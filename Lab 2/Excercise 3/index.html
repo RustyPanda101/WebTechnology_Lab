@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Task Manager</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif; background: #f4f7f6; display: flex; flex-direction: column; align-items: center;
+        }
+        .input-group {
+             margin: 20px;
+        }
+        input {
+             padding: 10px; width: 250px; border: 1px solid #ddd; border-radius: 4px;
+        }
+        button {
+             padding: 10px 20px; background: #2ecc71; color: white; border: none; border-radius: 4px; cursor: pointer; 
+        }
+        
+        .board {
+            display: flex; gap: 20px; width: 90%; max-width: 1000px; align-items: flex-start;
+        }
+        .column {
+            background: #ebedf0; border-radius: 8px; width: 33%; min-height: 400px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .column h2 {
+            text-align: center; color: #333; font-size: 1.2rem;
+        }
+
+        .task-card { 
+            background: white; padding: 15px; margin-top: 10px; border-radius: 6px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); cursor: grab; border-left: 5px solid #3498db;
+        }
+        .task-card small {
+            color: #888; display: block; margin-top: 5px;
+        }
+        .task-card.completed {
+            background: #d4edda; border-left-color: #27ae60;
+        }
+        
+        /* Drag and Drop Visual Feedback */
+        .column.drag-over {
+            background: #dfe3e6; border: 2px dashed #bbb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="input-group">
+        <input type="text" id="taskInput" placeholder="Enter task name...">
+        <button onclick="addTask()">Add Task</button>
+    </div>
+
+    <div class="board">
+        <div class="column" id="todo" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="clearStyles(event)">
+            <h2>To Do</h2>
+        </div>
+        <div class="column" id="inprogress" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="clearStyles(event)">
+            <h2>In Progress</h2>
+        </div>
+        <div class="column" id="completed" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="clearStyles(event)">
+            <h2>Completed</h2>
+        </div>
+    </div>
+
+    <script>
+        function addTask() {
+            const input = document.getElementById('taskInput');
+            if (input.value.trim() === "") return;
+
+            const taskId = 'task-' + Date.now();
+            const date = new Date().toLocaleDateString();
+
+            // Create Task Card
+            const task = document.createElement('div');
+            task.className = 'task-card';
+            task.id = taskId;
+            task.draggable = true;
+            task.ondragstart = drag;
+            
+            task.innerHTML = `
+                <strong>${input.value}</strong>
+                <small>Created: ${date}</small>
+            `;
+
+            document.getElementById('todo').appendChild(task);
+            input.value = "";
+        }
+
+        // Drag and Drop Logic
+        function allowDrop(ev) {
+            ev.preventDefault();
+            ev.currentTarget.classList.add('drag-over');
+        }
+
+        function clearStyles(ev) {
+            ev.currentTarget.classList.remove('drag-over');
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            const column = ev.currentTarget;
+            column.classList.remove('drag-over');
+            
+            const data = ev.dataTransfer.getData("text");
+            const taskCard = document.getElementById(data);
+            
+            column.appendChild(taskCard);
+
+            // Handle Completion Logic
+            if (column.id === 'completed') {
+                taskCard.classList.add('completed');
+                alert("Task Completed Successfully");
+            } else {
+                taskCard.classList.remove('completed');
+            }
+        }
+    </script>
+</body>
+</html>

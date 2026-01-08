@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Multimedia Page</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; }
+        section { border-bottom: 2px solid #eee; padding: 20px 0; }
+        .time-display { font-weight: bold; color: #2c3e50; margin-top: 10px; }
+        video { width: 100%; max-width: 600px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+    <h1>Multimedia Exercise</h1>
+
+    <section>
+        <h2>Audio Player</h2>
+        <audio id="myAudio" controls>
+            <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+            <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <div class="time-display">Current Time: <span id="audioTime">0.00</span>s</div>
+    </section>
+
+    <section>
+        <h2>Video Player</h2>
+        <video id="myVideo" controls poster="https://via.placeholder.com/600x340?text=Video+Thumbnail">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="time-display">Current Time: <span id="videoTime">0.00</span>s</div>
+    </section>
+
+    <script>
+        const audio = document.getElementById('myAudio');
+        const video = document.getElementById('myVideo');
+        const audioTimeSpan = document.getElementById('audioTime');
+        const videoTimeSpan = document.getElementById('videoTime');
+
+        // Update audio time display
+        audio.ontimeupdate = function() {
+            audioTimeSpan.textContent = audio.currentTime.toFixed(2);
+        };
+
+        // Update video time display
+        video.ontimeupdate = function() {
+            videoTimeSpan.textContent = video.currentTime.toFixed(2);
+        };
+    </script>
+
+</body>
+</html>
