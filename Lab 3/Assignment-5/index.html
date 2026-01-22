@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multi-Stage Form Engine</title>
+</head>
+<body>
+
+<div class="form-container">
+    <div class="progress-wrapper">
+        <div id="progressBar"></div>
+    </div>
+    <p id="stageIndicator">Stage 1 of 4</p>
+
+    <form id="workflowForm">
+        <div class="stage active" id="stage1">
+            <h3>Step 1: Account Info</h3>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="username" placeholder="Min 5 characters">
+                <div id="err1" class="error"></div>
+            </div>
+        </div>
+
+        <div class="stage" id="stage2">
+            <h3>Step 2: Contact Details</h3>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" id="phone" placeholder="10-digit number">
+                <div id="err2" class="error"></div>
+            </div>
+        </div>
+
+        <div class="stage" id="stage3">
+            <h3>Step 3: Occupation</h3>
+            <div class="form-group">
+                <label>Current Role</label>
+                <input type="text" id="jobRole" placeholder="e.g. Developer">
+                <div id="err3" class="error"></div>
+            </div>
+        </div>
+
+        <div class="stage" id="stage4">
+            <h3>Step 4: Confirm Terms</h3>
+            <div class="form-group">
+                <label>Type "I AGREE" to finish</label>
+                <input type="text" id="agreement">
+                <div id="err4" class="error"></div>
+            </div>
+        </div>
+
+        <div class="nav-btns">
+            <button type="button" class="btn-prev" id="prevBtn" style="visibility: hidden;">Previous</button>
+            <button type="button" class="btn-next" id="nextBtn">Next</button>
+            <button type="submit" class="btn-submit" id="submitBtn" style="display: none;">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>

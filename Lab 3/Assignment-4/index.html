@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Activity Monitor</title>
+</head>
+<body id="mainBody">
+
+    <h2>User Activity Telemetry</h2>
+    
+    <div class="monitor-container">
+        <div class="interactive-zone" id="captureZone">
+            <h3>Interactive Zone</h3>
+            <p>Type, click, or focus here to generate logs.</p>
+            <input type="text" id="testInput" placeholder="Type something...">
+            <button id="testButton">Click Me</button>
+            <div id="suspiciousMsg" class="warning"></div>
+        </div>
+
+        <div class="log-zone">
+            <div id="logHeader">-- SYSTEM LOGS ACTIVE --</div>
+            <div id="logDisplay"></div>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <button onclick="resetLogs()">Reset Log</button>
+        <button onclick="exportLogs()">Export as Text</button>
+    </div>
+
+    <script src="monitor.js" defer></script>
+</body>
+</html>

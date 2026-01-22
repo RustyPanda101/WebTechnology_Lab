@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Intelligent Shopping Cart</title>
+    <!-- <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f4f4f9; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
+        .controls { display: flex; gap: 10px; margin-bottom: 20px; align-items: center; }
+        .summary { margin-top: 20px; padding: 15px; background: #e9ecef; border-radius: 5px; }
+        .discount-note { color: green; font-weight: bold; font-size: 0.9em; }
+        button { cursor: pointer; padding: 8px 12px; border: none; border-radius: 4px; }
+        .btn-add { background: #28a745; color: white; }
+        .btn-remove { background: #dc3545; color: white; }
+    </style> -->
+</head>
+<body>
+
+<div class="container">
+    <h2>Smart Shopping Cart</h2>
+    
+    <div class="controls">
+        <select id="productSelect">
+            <option value="Laptop" data-price="50000" data-cat="Electronics">Laptop (₹50,000)</option>
+            <option value="Headphones" data-price="2000" data-cat="Electronics">Headphones (₹2,000)</option>
+            <option value="Notebook" data-price="100" data-cat="Stationery">Notebook (₹100)</option>
+            <option value="Desk Lamp" data-price="1500" data-cat="Home">Desk Lamp (₹1,500)</option>
+        </select>
+        <input type="number" id="prodQty" value="1" min="1" style="width: 50px;">
+        <button class="btn-add" onclick="addItem()">Add to Cart</button>
+    </div>
+
+    <div class="controls">
+        <input type="text" id="couponInput" placeholder="Enter Coupon (e.g., SAVE10)">
+        <button onclick="applyCoupon()">Apply Coupon</button>
+    </div>
+
+    <table id="cartTable">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="cartBody">
+            </tbody>
+    </table>
+
+    <div class="summary">
+        <div>Subtotal: ₹<span id="subtotal">0</span></div>
+        <div class="discount-note" id="discountInfo"></div>
+        <div style="font-size: 1.2em; font-weight: bold; margin-top:10px;">
+            Final Total: ₹<span id="finalTotal">0</span>
+        </div>
+    </div>
+</div>
+
+<script src="cart.js" defer></script>
+</body>
+</html>
