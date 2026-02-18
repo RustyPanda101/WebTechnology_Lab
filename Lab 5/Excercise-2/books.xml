@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<library>
+    <book>
+        <id>101</id>
+        <title>DBMS</title>
+        <author>Navathe</author>
+        <status>Available</status>
+    </book>
+</library>
