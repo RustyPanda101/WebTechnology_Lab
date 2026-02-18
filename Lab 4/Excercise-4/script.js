@@ -1,4 +1,4 @@
-const apiKey = "caefc9cc59ca668631ece15fc4f508c6"; 
+const apiKey = "api-key-removed-for-github"; 
 let cache = {};
 
 function getWeather() {
